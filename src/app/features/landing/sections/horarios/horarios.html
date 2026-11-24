@@ -1,0 +1,31 @@
+<section class="seccion" id="horarios">
+  <div class="container">
+    <div class="section-head">
+      <p class="section-head__kicker">Cuándo entrenar</p>
+      <h2 class="section-head__titulo">Horarios</h2>
+      <p class="section-head__bajada">
+        Abrimos temprano y cerramos tarde para que el gimnasio se adapte a tu
+        rutina, no al revés.
+      </p>
+    </div>
+
+    <div class="horarios__general">
+      @for (horario of horariosGenerales; track horario.dias) {
+        <div class="horarios__dia">
+          <span class="horarios__dias">{{ horario.dias }}</span>
+          <span class="horarios__hora">{{ horario.horario }}</span>
+        </div>
+      }
+    </div>
+
+    <div class="horarios__tabla" role="table" aria-label="Horarios de clases">
+      @for (franja of horariosClases; track franja.actividad) {
+        <div class="horarios__fila" role="row">
+          <span class="horarios__actividad" role="cell">{{ franja.actividad }}</span>
+          <span class="horarios__dias-semana" role="cell">{{ franja.dias }}</span>
+          <span class="horarios__franjas" role="cell">{{ franja.hora }}</span>
+        </div>
+      }
+    </div>
+  </div>
+</section>

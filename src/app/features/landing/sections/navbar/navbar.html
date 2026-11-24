@@ -1,0 +1,43 @@
+<header class="navbar" [class.navbar--abierto]="menuAbierto()">
+  <div class="container navbar__inner">
+    <a class="navbar__brand" href="#inicio" (click)="cerrarMenu()">
+      <svg
+        class="navbar__logo"
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 24 24"
+        fill="currentColor"
+        aria-hidden="true"
+      >
+        <rect x="1" y="9" width="3" height="6" rx="1" />
+        <rect x="20" y="9" width="3" height="6" rx="1" />
+        <rect x="4.5" y="7" width="3" height="10" rx="1" />
+        <rect x="16.5" y="7" width="3" height="10" rx="1" />
+        <rect x="8" y="10.5" width="8" height="3" rx="1" />
+      </svg>
+      <span>{{ marca }}</span>
+    </a>
+
+    <nav
+      class="navbar__links"
+      [class.navbar__links--visible]="menuAbierto()"
+      aria-label="Navegación principal"
+    >
+      @for (seccion of secciones; track seccion.id) {
+        <a [href]="'#' + seccion.id" (click)="cerrarMenu()">{{ seccion.etiqueta }}</a>
+      }
+      <a class="btn btn--primary navbar__cta" href="#planes" (click)="cerrarMenu()">Únete ahora</a>
+    </nav>
+
+    <button
+      class="navbar__toggle"
+      type="button"
+      (click)="alternarMenu()"
+      [attr.aria-expanded]="menuAbierto()"
+      aria-label="Abrir o cerrar el menú"
+    >
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </div>
+</header>

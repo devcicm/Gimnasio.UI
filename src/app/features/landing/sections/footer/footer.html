@@ -1,0 +1,24 @@
+<footer class="footer">
+  <div class="container footer__inner">
+    <div class="footer__marca">
+      <span class="footer__logo">{{ marca }}</span>
+      <p class="footer__frase">Entrená hoy por el cuerpo que querés mañana.</p>
+    </div>
+
+    <nav class="footer__links" aria-label="Navegación del pie de página">
+      @for (seccion of secciones; track seccion.id) {
+        <a [href]="'#' + seccion.id">{{ seccion.etiqueta }}</a>
+      }
+    </nav>
+
+    <div class="footer__redes">
+      @for (red of redes; track red.nombre) {
+        <a [href]="red.url" target="_blank" rel="noopener">{{ red.nombre }}</a>
+      }
+    </div>
+  </div>
+
+  <div class="container footer__legal">
+    <p>© {{ anio }} {{ marca }}. Todos los derechos reservados.</p>
+  </div>
+</footer>

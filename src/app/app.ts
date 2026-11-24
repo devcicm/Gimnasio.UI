@@ -1,12 +1,11 @@
-import { Component, signal } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { Landing } from './features/landing/landing';
 
 @Component({
-  imports: [RouterOutlet],
   selector: 'app-root',
+  imports: [Landing],
   styleUrl: './app.scss',
   templateUrl: './app.html',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class App {
-  protected readonly title = signal('Gimnasio.UI');
-}
+export class App {}

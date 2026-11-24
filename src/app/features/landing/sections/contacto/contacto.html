@@ -1,0 +1,76 @@
+<section class="seccion seccion--alterna" id="contacto">
+  <div class="container">
+    <div class="section-head">
+      <p class="section-head__kicker">Estamos para ayudarte</p>
+      <h2 class="section-head__titulo">Contacto</h2>
+      <p class="section-head__bajada">
+        Vení a conocernos, escribinos o dejá tus datos y te contactamos para
+        coordinar tu primera clase gratis.
+      </p>
+    </div>
+
+    <div class="contacto__grid">
+      <div class="contacto__info">
+        <div class="contacto__item">
+          <span class="contacto__etiqueta">Dirección</span>
+          <span class="contacto__valor">{{ contacto.direccion }}</span>
+        </div>
+        <div class="contacto__item">
+          <span class="contacto__etiqueta">Teléfono</span>
+          <span class="contacto__valor">{{ contacto.telefono }}</span>
+        </div>
+        <div class="contacto__item">
+          <span class="contacto__etiqueta">Email</span>
+          <span class="contacto__valor">{{ contacto.email }}</span>
+        </div>
+      </div>
+
+      <form class="contacto__form" (submit)="enviar($event)">
+        @if (enviado()) {
+          <p class="contacto__exito">
+            ¡Gracias! Recibimos tu mensaje, te vamos a contactar a la brevedad. 💪
+          </p>
+        } @else {
+          <label class="contacto__campo">
+            <span>Nombre</span>
+            <input
+              type="text"
+              name="nombre"
+              [(ngModel)]="nombre"
+              required
+              placeholder="Tu nombre"
+              autocomplete="name"
+            />
+          </label>
+          <label class="contacto__campo">
+            <span>Email</span>
+            <input
+              type="email"
+              name="email"
+              [(ngModel)]="email"
+              required
+              placeholder="tu@email.com"
+              autocomplete="email"
+            />
+          </label>
+          <label class="contacto__campo">
+            <span>Mensaje</span>
+            <textarea
+              name="mensaje"
+              [(ngModel)]="mensaje"
+              rows="4"
+              required
+              placeholder="Contanos qué buscás..."
+            ></textarea>
+          </label>
+          <button class="btn btn--primary btn--lg contacto__enviar" type="submit">
+            Enviar mensaje
+          </button>
+          <p class="contacto__nota">
+            Nota: el formulario es de demostración, pronto se conectará al backend.
+          </p>
+        }
+      </form>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,23 @@
+<section class="seccion" id="clases">
+  <div class="container">
+    <div class="section-head">
+      <p class="section-head__kicker">Entrená a tu manera</p>
+      <h2 class="section-head__titulo">Nuestras clases</h2>
+      <p class="section-head__bajada">
+        Seis disciplinas para elegir, guiadas por profesionales y pensadas para
+        todos los niveles de entrenamiento.
+      </p>
+    </div>
+
+    <div class="clases__grid">
+      @for (clase of clases; track clase.nombre) {
+        <article class="clase-card">
+          <span class="clase-card__numero">{{ $index + 1 | number: '2.0' }}</span>
+          <h3 class="clase-card__nombre">{{ clase.nombre }}</h3>
+          <p class="clase-card__descripcion">{{ clase.descripcion }}</p>
+          <span class="clase-card__nivel">{{ clase.nivel }}</span>
+        </article>
+      }
+    </div>
+  </div>
+</section>

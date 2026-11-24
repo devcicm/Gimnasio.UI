@@ -1,0 +1,88 @@
+.horarios__general {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.25rem;
+  margin-bottom: 2.5rem;
+}
+
+.horarios__dia {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  padding: 1.25rem;
+  border: 1px solid var(--c-border);
+  border-radius: 14px;
+  background: var(--c-surface);
+  text-align: center;
+
+  .horarios__dias {
+    color: var(--c-text-muted);
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+
+  .horarios__hora {
+    font-family: var(--font-display);
+    font-size: 1.3rem;
+    color: var(--c-accent);
+  }
+}
+
+.horarios__tabla {
+  overflow: hidden;
+  border: 1px solid var(--c-border);
+  border-radius: 14px;
+  background: var(--c-surface);
+}
+
+.horarios__fila {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr 1.4fr;
+  gap: 1rem;
+  align-items: center;
+  padding: 1rem 1.5rem;
+  border-bottom: 1px solid var(--c-border);
+
+  &:last-child {
+    border-bottom: 0;
+  }
+
+  &:nth-child(odd) {
+    background: color-mix(in srgb, var(--c-surface-2) 60%, transparent);
+  }
+}
+
+.horarios__actividad {
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.horarios__dias-semana {
+  color: var(--c-text-muted);
+  font-size: 0.9rem;
+}
+
+.horarios__franjas {
+  color: var(--c-accent);
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-align: right;
+}
+
+@media (max-width: 700px) {
+  .horarios__general {
+    grid-template-columns: 1fr;
+  }
+
+  .horarios__fila {
+    grid-template-columns: 1fr;
+    gap: 0.2rem;
+    padding: 1rem 1.25rem;
+  }
+
+  .horarios__franjas {
+    text-align: left;
+  }
+}

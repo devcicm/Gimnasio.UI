@@ -1,0 +1,44 @@
+<section class="seccion seccion--alterna" id="planes">
+  <div class="container">
+    <div class="section-head">
+      <p class="section-head__kicker">Precios sin letra chica</p>
+      <h2 class="section-head__titulo">Elegí tu plan</h2>
+      <p class="section-head__bajada">
+        Todos los planes incluyen acceso a la sala de musculación y asesoría de
+        nuestros entrenadores.
+      </p>
+    </div>
+
+    <div class="planes__grid">
+      @for (plan of planes; track plan.nombre) {
+        <article
+          class="plan"
+          [class.plan--destacado]="plan.destacado"
+        >
+          @if (plan.destacado) {
+            <span class="plan__insignia">Más elegido</span>
+          }
+          <h3 class="plan__nombre">{{ plan.nombre }}</h3>
+          <p class="plan__precio">
+            <span class="plan__monto">{{ plan.precio }}</span>
+            <span class="plan__periodo">{{ plan.periodo }}</span>
+          </p>
+          <p class="plan__descripcion">{{ plan.descripcion }}</p>
+          <ul class="plan__lista">
+            @for (caracteristica of plan.caracteristicas; track caracteristica) {
+              <li>{{ caracteristica }}</li>
+            }
+          </ul>
+          <a
+            class="btn btn--lg"
+            href="#contacto"
+            [class.btn--primary]="plan.destacado"
+            [class.btn--ghost]="!plan.destacado"
+          >
+            Elegir plan
+          </a>
+        </article>
+      }
+    </div>
+  </div>
+</section>

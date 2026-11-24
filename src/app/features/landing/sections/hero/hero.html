@@ -1,0 +1,23 @@
+<section class="hero" id="inicio">
+  <div class="container hero__inner">
+    <p class="hero__kicker">Tu cambio empieza hoy</p>
+    <h1 class="hero__titulo">
+      Transformá <span class="hero__acento">tu cuerpo</span>
+    </h1>
+    <p class="hero__lema">{{ lema }}</p>
+
+    <div class="hero__acciones">
+      <a class="btn btn--primary btn--lg" href="#planes">Ver planes</a>
+      <a class="btn btn--ghost btn--lg" href="#clases">Conocer las clases</a>
+    </div>
+
+    <dl class="hero__stats">
+      @for (stat of stats; track stat.etiqueta) {
+        <div class="hero__stat">
+          <dd>{{ stat.valor }}</dd>
+          <dt>{{ stat.etiqueta }}</dt>
+        </div>
+      }
+    </dl>
+  </div>
+</section>
