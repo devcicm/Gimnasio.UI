@@ -1,59 +1,64 @@
-# GimnasioUI
+# Gimnasio.UI — Frontend del Sistema de Control de Gimnasios 🏋️
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 22.3.0.
+Interfaz web del **Sistema de Control de Gimnasios**: una plataforma **multi-tenant** donde cada gimnasio cliente opera con sus propios socios, membresías, clases y configuración, sin mezclar datos con otros gimnasios.
 
-## Development server
+> 📖 **¿Primera vez?** El contexto completo del proyecto (negocio, historia, glosario) está en el repo del backend: [`Developer-net-web/Gimnasio`](https://github.com/Developer-net-web/Gimnasio) → [`docs/00-contexto-y-trasfondo.md`](https://github.com/Developer-net-web/Gimnasio/blob/desarrollo/docs/00-contexto-y-trasfondo.md)
 
-To start a local development server, run:
+## ¿Qué hay implementado?
+
+| Pieza | Estado |
+|---|---|
+| **Landing page pública** | ✅ Navbar responsive, hero, clases, planes, horarios, contacto y footer — contenido en español, sin dependencias externas |
+| **Paneles internos** | 🔨 Pendientes (dependerán de la API: socios, membresías, caja...) |
+
+La landing reemplaza la plantilla placeholder de Angular CLI. Su contenido está centralizado en `src/app/features/landing/landing-data.ts` — cuando existan los endpoints de la API, esas secciones pasarán a consumir datos reales (las entidades `Clase`, `PlanMembresium` y `HorarioClase` del backend ya coinciden con las secciones).
+
+## Stack
+
+- **Angular 22** (standalone components, signals, control flow `@for`/`@if`)
+- **SCSS** con tokens de diseño globales (`src/styles.scss`) — sin librerías de UI ni imágenes binarias
+- **Vitest** para pruebas unitarias · **TypeScript 6**
+
+## Inicio rápido
+
+### Requisitos
+- Node.js (con npm) — revisar la versión que exige Angular 22 en `package.json`
+- No requiere base de datos ni backend para la landing (contenido estático)
+
+### Ejecutar
 
 ```bash
+npm install
 ng serve
+# → http://localhost:4200
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
-
-## Code scaffolding
-
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+### Verificar
 
 ```bash
-ng generate component component-name
+ng build   # compila (producción)
+ng test    # pruebas unitarias
 ```
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+## Estructura
 
-```bash
-ng generate --help
+```
+src/app/
+  app.ts / app.html          → raíz: monta la landing
+  features/
+    landing/
+      landing-data.ts        → ⭐ contenido editable en un solo lugar
+      sections/
+        navbar/ hero/ clases/ planes/ horarios/ contacto/ footer/
 ```
 
-## Building
+Convención para próximas implementaciones: una carpeta por módulo/feature bajo `src/app/features/<modulo>/`.
 
-To build the project run:
+## El proyecto completo
 
-```bash
-ng build
-```
+| Repo | Qué es |
+|---|---|
+| **Este repo** (`Gimnasio.UI`) | Frontend Angular |
+| [`Gimnasio`](https://github.com/Developer-net-web/Gimnasio) | API .NET 8 + base de datos SQL Server (2008–2022) |
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+Flujo de ramas: `feature/<nombre>` → PR → `desarrollo` → `qa` → `produccion` → `main`.
